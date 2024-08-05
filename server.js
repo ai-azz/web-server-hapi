@@ -9,18 +9,28 @@ const init = async () => {
         host: 'localhost',
     });
 
-    // create routing on hapi project (using route configuration object on `server.route()` method)
-    server.route({
-        method: 'GET',  // specify the HTTP method for the route
-        path: '/',  // define the URL path for the route
-        handler: (request, h) => {
-            // response to be sent when the route is accessed
-            return 'Hello World!';
-        }
-    });
+    // define multiple routes using an array of route objects
+    server.route([
+        {   // 1st route
+            method: 'GET',  // the HTTP method for the 1st route
+            path: '/',  // the URL path for the  1st route
+            handler: (request, h) => {
+                // response returned for requests to the root path
+                return 'Hello World!';
+            },
+        },
+        {   // 2nd route
+            method: 'GET',  // the http method for the 2nd route
+            path: '/about',  // the URL path for the 2nd route
+            handler: (request, h) => {
+                // response returned for request to the /about path
+                return 'About page';
+            },
+        },
+    ]);
 
-    await server.start();  // start the server
-    console.log(`Server running on ${server.info.uri}`);  // log the server URI
+    await server.start();  // start the server asynchronously
+    console.log(`Server running on ${server.info.uri}`);  // log the server URI to the console
 }
 
-init(); // initialize the server
+init(); // execute the ini func to start the server
