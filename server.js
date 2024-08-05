@@ -1,5 +1,6 @@
 // import the Hapi module
 const Hapi = require('@hapi/hapi');
+const routes = require('./routes');  // import the routes module
 
 // create asynchronous func to configure and start the server
 const init = async () => {
@@ -9,25 +10,7 @@ const init = async () => {
         host: 'localhost',
     });
 
-    // define multiple routes using an array of route objects
-    server.route([
-        {   // 1st route
-            method: 'GET',  // the HTTP method for the 1st route
-            path: '/',  // the URL path for the  1st route
-            handler: (request, h) => {
-                // response returned for requests to the root path
-                return 'Hello World!';
-            },
-        },
-        {   // 2nd route
-            method: 'GET',  // the http method for the 2nd route
-            path: '/about',  // the URL path for the 2nd route
-            handler: (request, h) => {
-                // response returned for request to the /about path
-                return 'About page';
-            },
-        },
-    ]);
+    server.route(routes);  // register the imported routes with the server
 
     await server.start();  // start the server asynchronously
     console.log(`Server running on ${server.info.uri}`);  // log the server URI to the console
