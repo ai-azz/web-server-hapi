@@ -28,13 +28,13 @@ const routes = [
             return 'Halaman about tidak dapat diakses dengan method tersebut';
         },
     },
-    {
-        method: 'GET',  // http method for the /hello/{name?} path (GET requests)
-        path: '/hello/{name?}',  // the url path with an optional parameter {name}
+    {   
+        method: 'GET',
+        path: '/hello/{name?}',
         handler: (request, h) => {
-            const {name} = request.params;  // extract the name parameter from the request
-            // response returned for GET requests to the /hello/{name?} path
-            return `Hello, ${name}`;  // use the name parameter in the response
+            // extract the name parameter from the request, defaulting to "stranger" if not provided
+            const {name = "stranger"} = request.params;
+            return `Hello, ${name}!`;
         },
     },
     {   
