@@ -1,4 +1,3 @@
-// define an array of route objects for configuring server routes
 const routes = [
     {   
         method: 'GET',
@@ -32,9 +31,15 @@ const routes = [
         method: 'GET',
         path: '/hello/{name?}',
         handler: (request, h) => {
-            // extract the name parameter from the request, defaulting to "stranger" if not provided
             const {name = "stranger"} = request.params;
-            return `Hello, ${name}!`;
+            // extract the 'lang' query parameter from the request
+            const {lang} = request.query;
+            // check if the 'lang' query parameter is 'id' (for Indonesian language)
+            if(lang === 'id') {
+                return `Hai, ${name}!`;  // return a greeting message in Indonesian
+            }
+
+            return `Hello, ${name}!`;  // return a greeting message in English
         },
     },
     {   
