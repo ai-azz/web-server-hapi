@@ -2,7 +2,7 @@
 
 This project is a continuation and enhancement of my previous basic backend project, where I initially built a web server using Node.js native modules. In this version, I have implemented the Hapi.js framework to simplify backend development while maintaining similar functionality. 
 
-🔗 Previous project: [Basic Web Server with Node.js](https://github.com/ai-azz/web-server-hapi)
+🔗 Previous project: [Basic Web Server with Node.js](https://github.com/ai-azz/web-server-nodejs)
 
 ## Table of Contents
 1. [Introduction](#introduction)
